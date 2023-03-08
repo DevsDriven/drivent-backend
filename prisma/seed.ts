@@ -40,7 +40,6 @@ async function main() {
   }
 
   let hotels = await prisma.hotel.findMany();
-  console.log(hotels)
   if(hotels.length === 0) {
     await prisma.hotel.createMany({
       data:[{
@@ -57,6 +56,8 @@ async function main() {
   }
   
   console.log({ event });
+  console.log(ticketTypes);
+  console.log(hotels)
 }
 
 main()
