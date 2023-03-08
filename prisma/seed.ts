@@ -17,7 +17,8 @@ async function main() {
   }
 
   let ticketTypes = await prisma.ticketType.findMany();
-  if(!ticketTypes) {
+  console.log(ticketTypes)
+  if(ticketTypes.length === 0) {
     await prisma.ticketType.createMany({
       data:[{
         name: "Online",
@@ -38,8 +39,9 @@ async function main() {
     });
   }
 
-  let hotels = await prisma.ticketType.findMany();
-  if(!hotels) {
+  let hotels = await prisma.hotel.findMany();
+  console.log(hotels)
+  if(hotels.length === 0) {
     await prisma.hotel.createMany({
       data:[{
         name: "Driven Resort",
