@@ -7,6 +7,7 @@ async function verifyTicketAndEnrollment(ticketId: number, userId: number) {
   const ticket = await ticketRepository.findTickeyById(ticketId);
 
   if (!ticket) {
+    console.log("ok");
     throw notFoundError();
   }
   const enrollment = await enrollmentRepository.findById(ticket.enrollmentId);
@@ -18,7 +19,7 @@ async function verifyTicketAndEnrollment(ticketId: number, userId: number) {
 
 async function getPaymentByTicketId(userId: number, ticketId: number) {
   await verifyTicketAndEnrollment(ticketId, userId);
-
+  console.log("ok");
   const payment = await paymentRepository.findPaymentByTicketId(ticketId);
 
   if (!payment) {

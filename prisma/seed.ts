@@ -54,10 +54,35 @@ async function main() {
       }]
     })
   }
+
+  let rooms = await prisma.room.findMany();
+  if(rooms.length === 0) {
+    await prisma.room.createMany({
+      data: [{
+        name: "101",
+        capacity: 2,
+        hotelId: 1
+      }, {
+        name: "102",
+        capacity: 1,
+        hotelId: 1
+      }, {
+        name: "101",
+        capacity: 1,
+        hotelId: 2
+      }, {
+        name: "101",
+        capacity: 3,
+        hotelId: 3
+      }
+      ]
+    })
+  }
   
   console.log({ event });
   console.log(ticketTypes);
-  console.log(hotels)
+  console.log(hotels);
+  console.log(rooms);
 }
 
 main()
