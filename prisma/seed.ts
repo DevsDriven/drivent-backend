@@ -10,7 +10,7 @@ async function main() {
         title: "Driven.t",
         logoImageUrl: "https://files.driveneducation.com.br/images/logo-rounded.png",
         backgroundImageUrl: "linear-gradient(to right, #FA4098, #FFD77F)",
-        startsAt: dayjs().toDate(),
+        startsAt: dayjs().hour(0).toDate(),
         endsAt: dayjs().add(21, "days").toDate(),
       },
     });
@@ -78,11 +78,33 @@ async function main() {
       ]
     })
   }
+
+  let activities = await prisma.activities.findMany();
+  if(activities.length === 0) {
+    await prisma.activities.createMany({
+      data: [{
+        auditorium: "Auditório Principal",
+        name: "Minecraft - montando o PC ideal",
+        seats: 30,
+        eventId: 1,
+        startsAt: dayjs().hour(9).toDate(),
+        endsAt: dayjs().hour(10).toDate()
+      }, {
+        auditorium: "Auditório Lateral",
+        name: "LoL - montando o PC ideal",
+        seats: 20,
+        eventId: 1,
+        startsAt: dayjs().hour(11).toDate(),
+        endsAt: dayjs().hour(13).toDate()
+      }]
+    })
+  }
   
   console.log({ event });
   console.log(ticketTypes);
   console.log(hotels);
   console.log(rooms);
+  console.log(activities);
 }
 
 main()
