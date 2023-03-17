@@ -145,6 +145,7 @@ model Activities {
   id           Int            @id @default(autoincrement())
   Event        Event          @relation(fields: [eventId], references: [id])
   eventId      Int
+  auditorium   String         @db.VarChar(255)
   name         String         @db.VarChar(255)
   seats        Int
   startsAt     DateTime

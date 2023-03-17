@@ -83,12 +83,14 @@ async function main() {
   if(activities.length === 0) {
     await prisma.activities.createMany({
       data: [{
+        auditorium: "Auditório Principal",
         name: "Minecraft - montando o PC ideal",
         seats: 30,
         eventId: 1,
         startsAt: dayjs().hour(9).toDate(),
         endsAt: dayjs().hour(10).toDate()
       }, {
+        auditorium: "Auditório Lateral",
         name: "LoL - montando o PC ideal",
         seats: 20,
         eventId: 1,

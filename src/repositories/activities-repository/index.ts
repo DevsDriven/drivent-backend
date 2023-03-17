@@ -10,7 +10,7 @@ async function findDays() {
 }
 
 async function findActivities(day: string) {
-  const queryString = "2023-03-17";
+  const queryString = day;
   try {
     const activities = await prisma.$queryRaw(Prisma.sql`
     SELECT * FROM "Activities"
