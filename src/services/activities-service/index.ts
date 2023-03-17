@@ -5,8 +5,8 @@ async function getDays(userId: number) {
   return days;
 }
 
-async function getActivities(userId: number, dayId: number) {
-  const activities = await activitiesRepository.findActivities();
+async function getActivities(userId: number, day: string) {
+  const activities = await activitiesRepository.findActivities(day);
   return activities;
 }
 

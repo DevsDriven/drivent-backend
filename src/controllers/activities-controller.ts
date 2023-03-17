@@ -15,9 +15,9 @@ export async function getActivitiesDays(req: AuthenticatedRequest, res: Response
 
 export async function getActivitiesFromDate(req: AuthenticatedRequest, res: Response) {
   const { userId } = req;
-  const { dayId } = req.params;
+  const { day } = req.params;
   try {
-    const activities = "await activitiesService.getActivities(Number(userId), Number(dayId))";
+    const activities = await activitiesService.getActivities(Number(userId), day);
     return res.status(httpStatus.OK).send(activities);
   } catch (error) {
     return res.sendStatus(httpStatus.BAD_REQUEST);
